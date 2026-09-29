@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A working library search demonstration by Matt Abraham: unified catalogue search, exact source passages and current holdings."
+    />
+    <title>Library Search — Matt Abraham</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#search">Skip to search</a>
+    <header>
+      <a class="brand" href="./"
+        ><span class="monogram" aria-hidden="true">L</span> Library Search</a
+      >
+      <nav aria-label="Portfolio">
+        <a href="https://github.com/tbmattnz/library-search">View code ↗</a
+        ><a
+          href="https://github.com/tbmattnz/product-case-studies/blob/main/library.md"
+          >Related case study ↗</a
+        >
+      </nav>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">A WORKING DEMONSTRATION / MATT ABRAHAM</p>
+        <h1>Find the record.<br /><em>Follow the evidence.</em></h1>
+        <p class="lede">
+          One search across catalogue records and digitised text. <br />See where
+          an item lives, then read the passage that matched.
+        </p>
+        <div class="facts">
+          <span>2 catalogues</span><span>6 records</span
+          ><span>3 digital excerpts</span>
+        </div>
+      </section>
+      <section class="workspace" aria-label="Library search">
+        <div class="search-area">
+          <form id="search-form">
+            <label for="search">Search the demonstration collection</label>
+            <div class="search-line">
+              <input
+                id="search"
+                name="q"
+                type="search"
+                maxlength="300"
+                placeholder="Try a title, author or phrase…"
+                value="orange marmalade"
+                autocomplete="off"
+              /><button type="submit">
+                Search <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </form>
+          <div class="examples" aria-label="Example searches">
+            <span>Try:</span
+            ><button data-query="orange marmalade">A passage</button
+            ><button data-query="Jane Austen">An author</button
+            ><button data-query="reading room">A newspaper</button
+            ><button data-query="coastal botany">No digital copy</button
+            ><button data-query="harbour">A broken link</button>
+          </div>
+          <div class="filters">
+            <label
+              >Material
+              <select id="kind">
+                <option>All</option>
+                <option>Book</option>
+                <option>Journal</option>
+                <option>Newspaper</option>
+              </select></label
+            ><label class="check"
+              ><input type="checkbox" id="available" />Available copies
+              only</label
+            >
+          </div>
+        </div>
+        <div class="result-header">
+          <h2 id="result-count" role="status" aria-live="polite"></h2>
+          <span>Ranked catalogue + full-text matches</span>
+        </div>
+        <div id="results"></div>
+      </section>
+      <aside class="method">
+        <div>
+          <p class="eyebrow">WHAT YOU’RE SEEING</p>
+          <h2>Evidence, without invention.</h2>
+          <p>
+            This demo retrieves exact passages using keyword ranking. It does
+            not generate answers or use an AI service. Holdings are fictional;
+            literary excerpts are public domain.
+          </p>
+          <p>
+            “Demo page” refers to a page in this small excerpt fixture, not the
+            pagination of a printed edition.
+          </p>
+        </div>
+        <div>
+          <p class="eyebrow">TRY THE DATA BOUNDARY</p>
+          <h2>Availability can change.</h2>
+          <p>
+            Simulate a loan of every available Alice copy. Search results read
+            the updated catalogue while the text index stays unchanged. This
+            changes only your browser’s sample data.
+          </p>
+          <button class="secondary" id="loan">
+            Simulate Alice copies on loan
+          </button>
+          <p id="loan-status" class="small" role="status">
+            Alice: 2 of 3 copies available.
+          </p>
+        </div>
+      </aside>
+      <footer>
+        <span>Designed & built by Matt Abraham</span
+        ><a href="https://github.com/tbmattnz/library-search#readme"
+          >How it works & limitations ↗</a
+        >
+      </footer>
+    </main>
+    <dialog id="reader" aria-labelledby="reader-title">
+      <div class="reader-head">
+        <p class="eyebrow">SOURCE READER</p>
+        <button
+          id="close-reader"
+          class="secondary"
+          aria-label="Close source reader"
+        >
+          Close ×
+        </button>
+      </div>
+      <h2 id="reader-title"></h2>
+      <p id="reader-location" class="small"></p>
+      <blockquote id="reader-text"></blockquote>
+      <p id="reader-credit" class="small"></p>
+      <a id="reader-source" target="_blank" rel="noopener noreferrer"
+        >Read the original work ↗</a
+      >
+    </dialog>
+    <noscript
+      >This demonstration needs JavaScript for local search. Read the
+      implementation and fixtures on GitHub.</noscript
+    >
+  </body>
+</html>
